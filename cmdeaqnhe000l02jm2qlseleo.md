@@ -1,5 +1,5 @@
 ---
-title: "Architecture Design"
+title: "Architectural Alchemy"
 seoTitle: "Cloud"
 datePublished: Tue Jul 22 2025 08:52:26 GMT+0000 (Coordinated Universal Time)
 cuid: cmdeaqnhe000l02jm2qlseleo
