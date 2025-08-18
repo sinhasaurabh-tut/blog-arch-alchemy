@@ -8,6 +8,8 @@ cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1754492913602/6bfbbc7
 
 ---
 
-[![CLOUD](https://cdn.hashnode.com/res/hashnode/image/upload/v1753171990349/da4d755c-ac97-487b-9422-2f54bf9e96ed.png align="left")](https://cloud-sinhasaurabh.hashnode.dev/)
+[![CLOUD](https://cdn.hashnode.com/res/hashnode/image/upload/v1753171990349/da4d755c-ac97-487b-9422-2f54bf9e96ed.png align="center")](https://cloud-sinhasaurabh.hashnode.dev/)
 
 # [CLOUD](https://cloud-sinhasaurabh.hashnode.dev/)
+
+[![](https://cdn.hashnode.com/res/hashnode/image/upload/v1755554228630/6469c3cb-37a6-4474-aee3-6ede6a3a3148.png align="center")](https://sd-sinhasaurabh.hashnode.dev/)
