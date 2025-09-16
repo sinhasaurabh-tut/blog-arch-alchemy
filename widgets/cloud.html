@@ -1,0 +1,119 @@
+<style>
+  .product-card-container {
+    max-width: 640px;
+    margin: 24px auto;
+    font-family: "SF Pro Text", Helvetica, sans-serif;
+    padding: 10px;
+    background: #f9fbfd;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(10, 102, 194, 0.15);
+  }
+  .product-card-title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 600;
+    color: #0a66c2;
+    margin-bottom: 24px;
+    letter-spacing: 1px;
+  }
+  .product-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .product-card {
+    background: #fff;
+    flex: 1 1 180px;
+    max-width: 200px;
+    border-radius: 14px;
+    box-shadow: 0 3px 12px rgba(10, 102, 194, 0.2);
+    cursor: pointer;
+    text-decoration: none;
+    color: #222;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(10, 102, 194, 0.4);
+  }
+  .product-image-wrapper {
+    width: 100%;
+    padding-top: 60%; /* 5:3 aspect ratio */
+    position: relative;
+    overflow: hidden;
+    background-color: #f0f4fb;
+  }
+  .product-image-wrapper img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+  }
+  .product-info {
+    padding: 14px 12px 18px 12px;
+    text-align: center;
+  }
+  .product-name {
+    font-family: "Georgia", serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 20px;
+    color: #0a66c2;
+    letter-spacing: 0.7px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+    margin: 0;
+  }
+  @media (max-width: 480px) {
+    .product-card {
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
+  }
+</style>
+
+<div class="product-card-container" role="region" aria-label="Product topic cards widget">
+  <h2 class="product-card-title">Cloud Series</h2>
+  <div id="product-cards" class="product-cards"></div>
+</div>
+
+<script>
+  const products = [
+    { name: "Architecture Design", url: "https://sinhasaurabh.hashnode.dev/", img: "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/img/architecturalalchemy/arch-design/ad.png" },
+    { name: "Cloud", url: "https://cloud-sinhasaurabh.hashnode.dev/", img: "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/img/architecturalalchemy/cloud/Cloud_img.png" },
+    { name: "Migration", url: "https://cloud-sinhasaurabh.hashnode.dev/", img: "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/img/architecturalalchemy/cloud/migration.png" },
+    { name: "Security", url: "https://cloud-sinhasaurabh.hashnode.dev/", img: "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/img/architecturalalchemy/cloud/cloud-security.png" }
+  ];
+
+  function renderProductCards(containerId, items) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = "";
+    items.forEach(item => {
+      const a = document.createElement("a");
+      a.className = "product-card";
+      a.href = item.url;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.setAttribute("aria-label", `Explore topic ${item.name}`);
+
+      a.innerHTML = `
+        <div class="product-image-wrapper">
+          <img src="${item.img}" alt="${item.name} image" loading="lazy" />
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">${item.name}</h3>
+        </div>
+      `;
+      container.appendChild(a);
+    });
+  }
+
+  renderProductCards("product-cards", products);
+</script>
