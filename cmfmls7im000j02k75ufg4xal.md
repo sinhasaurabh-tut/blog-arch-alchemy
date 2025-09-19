@@ -10,6 +10,4 @@ tags: aws, azure, architecture, system-architecture, system-design, gcp, archite
 
 ---
 
-%%[header] 
-
-%%[all-topics]
+%%[main-topics]
