@@ -1,0 +1,22 @@
+{
+  "cards": [
+    {
+      "name": "Migration",
+      "url": "https://cloud-sinhasaurabh.hashnode.dev/series/legacy-modernization-journey",
+      "img": "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/img/architecturalalchemy/cloud/migration.png",
+      "subtitle": ""
+    },
+    {
+      "name": "Security",
+      "url": "https://cloud-sinhasaurabh.hashnode.dev/series/cloud-security",
+      "img": "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/img/architecturalalchemy/cloud/cloud-security.png",
+      "subtitle": ""
+    },
+    {
+      "name": "Crash Course",
+      "url": "https://ai-sinhasaurabh.hashnode.dev/",
+      "img": "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/img/architecturalalchemy/cloud/Cloud_img.png",
+      "subtitle": ""
+    }
+  ]
+}
