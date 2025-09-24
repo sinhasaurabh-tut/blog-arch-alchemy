@@ -332,8 +332,11 @@
 </div>
 
 <script>
-    // URL TO YOUR HOSTED JSON FILE
-    const DATA_URL = "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/pages/arch-design/arch-data.json";
+    // URL for the common data (header, nav, footer)
+    const COMMON_DATA_URL = "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/pages/arch-design/global-data.json";
+
+    // URL for the page-specific data (cards)
+    const PAGE_DATA_URL = "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/pages/arch-design/arch-data.json";
 
     // --- Dynamic Rendering Functions ---
 
@@ -416,21 +419,36 @@
     // --- Fetch and Render All Content ---
 
     document.addEventListener('DOMContentLoaded', () => {
-        fetch(DATA_URL)
+        // Fetch common data (header, nav, footer)
+        fetch(COMMON_DATA_URL)
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    throw new Error('Network response for common data was not ok');
                 }
                 return response.json();
             })
             .then(data => {
                 renderHeader(data.header);
                 renderNavMenu(data.navLinks);
-                renderProductCards(data.cards);
                 renderFooter(data.footer);
             })
             .catch(error => {
-                console.error('Error loading dynamic content:', error);
+                console.error('Error loading common content:', error);
+            });
+
+        // Fetch page-specific data (cards)
+        fetch(PAGE_DATA_URL)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response for page data was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                renderProductCards(data.cards);
+            })
+            .catch(error => {
+                console.error('Error loading page content:', error);
             });
     });
 </script>
