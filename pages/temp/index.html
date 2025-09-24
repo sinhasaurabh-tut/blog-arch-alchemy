@@ -1,23 +1,141 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<script>
+    // DEFINE CONTENT AND VARIABLES HERE
+    const dynamicContent = {
+      header: {
+        title: "Architectural Alchemy",
+        buttonText: "Follow on LinkedIn",
+        buttonUrl: "https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=sinha-saurabh-in"
+      },
+      cards: [
+        {
+          name: "Architecture Design",
+          url: "https://sinhasaurabh.hashnode.dev/",
+          img: "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/img/architecturalalchemy/arch-design/ad.png",
+          subtitle: "Main Home Page"
+        },
+        {
+          name: "Cloud",
+          url: "https://cloud-sinhasaurabh.hashnode.dev/cloud-series",
+          img: "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/img/architecturalalchemy/cloud/Cloud_img.png",
+          subtitle: ""
+        },
+        {
+          name: "System Design",
+          url: "https://sd-sinhasaurabh.hashnode.dev/",
+          img: "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/img/architecturalalchemy/sd/sd.png",
+          subtitle: ""
+        },
+        {
+          name: "Artificial Intelligence",
+          url: "https://ai-sinhasaurabh.hashnode.dev/",
+          img: "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/img/architecturalalchemy/ai/ai-home.png",
+          subtitle: ""
+        }
+      ],
+      footer: {
+        privacyPolicyText: "Privacy Policy",
+        privacyPolicyUrl: "https://hashnode.com/privacy?source=blog-footer",
+        socialTitle: "Saurabh Sinha",
+        socialLinks: [
+          { icon: "fab fa-twitter", url: "https://x.com/sinha_saurabh_in" },
+          { icon: "fab fa-linkedin-in", url: "https://www.linkedin.com/in/sinha-saurabh-in/" },
+          { icon: "fab fa-github", url: "https://github.com/sinhasaurabh-tut" },
+          { icon: "fab fa-youtube", url: "https://www.youtube.com/@SaurabhSinha_in" }
+        ]
+      }
+    };
+
+    // DYNAMIC PAGE RENDERING LOGIC
+    function setHeaderContent(headerData) {
+      const headerTitleElement = document.getElementById('dynamic-title');
+      const headerLinkElement = document.getElementById('header-link');
+      if (headerTitleElement) {
+        headerTitleElement.textContent = headerData.title;
+      }
+      if (headerLinkElement) {
+        headerLinkElement.textContent = headerData.buttonText;
+        headerLinkElement.href = headerData.buttonUrl;
+      }
+    }
+
+    function renderProductCards(containerId, items) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = "";
+      items.forEach(item => {
+        const a = document.createElement("a");
+        a.className = "product-card";
+        a.href = item.url;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.setAttribute("aria-label", `Explore topic ${item.name}`);
+
+        a.innerHTML = `
+          <div class="product-image-wrapper">
+            <img src="${item.img}" alt="${item.name} image" loading="lazy" />
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">${item.name}</h3>
+            ${item.subtitle ? `<p class="product-subtitle">${item.subtitle}</p>` : ""}
+          </div>
+        `;
+        container.appendChild(a);
+      });
+    }
+
+    function setFooterContent(footerData) {
+      const privacyPolicyLink = document.getElementById('privacy-policy-link');
+      const socialTitleElement = document.getElementById('footer-social-title');
+      const socialLinksContainer = document.getElementById('social-links-container');
+
+      if (privacyPolicyLink) {
+        privacyPolicyLink.textContent = footerData.privacyPolicyText;
+        privacyPolicyLink.href = footerData.privacyPolicyUrl;
+      }
+
+      if (socialTitleElement) {
+        socialTitleElement.textContent = footerData.socialTitle;
+      }
+
+      if (socialLinksContainer) {
+        socialLinksContainer.innerHTML = "";
+        footerData.socialLinks.forEach(link => {
+          const a = document.createElement("a");
+          a.href = link.url;
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          a.innerHTML = `<i class="${link.icon}"></i>`;
+          socialLinksContainer.appendChild(a);
+        });
+      }
+    }
+
+    // INITIALIZE THE PAGE
+    document.addEventListener("DOMContentLoaded", () => {
+      setHeaderContent(dynamicContent.header);
+      renderProductCards("product-cards", dynamicContent.cards);
+      setFooterContent(dynamicContent.footer);
+    });
+</script>
 
 <style>
-    /* Your style.css content goes here */
+    /* VARIABLES */
     :root {
-      --bg-color: #ebf0f5;
-      --card-bg: #f8f9fc;
-      --card-container-bg: #f8f9fc;
-      --text-color: #333333;
-      --primary-color: #0a66c2;
-      --secondary-color: #7a828e;
-      --card-border-color: #e6e9ed;
+      --bg-color: #ebf0f5; /* Enhanced elegant light gray-blue for background */
+      --card-bg: #f8f9fc; /* Off-white for cards, providing a subtle contrast */
+      --card-container-bg: #f8f9fc; /* Matching the card color for a cohesive frame */
+      --text-color: #333333; /* Dark gray for prose text */
+      --primary-color: #0a66c2; /* LinkedIn Blue */
+      --secondary-color: #7a828e; /* Subtle gray for subtitles */
+      --card-border-color: #e6e9ed; /* Very light gray for borders */
       --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.05);
       --shadow-medium: 0 6px 18px rgba(10, 102, 194, 0.08);
       --shadow-hover: 0 16px 32px rgba(10, 102, 194, 0.15);
       --border-radius-large: 20px;
       --border-radius-card: 18px;
-      --footer-bg: #f9fafc;
+      --footer-bg: #f9fafc; /* Lighter shade for the footer section */
     }
 
+    /* GLOBAL STYLES */
     body {
       background-color: var(--bg-color);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -27,6 +145,7 @@
       padding: 20px;
     }
 
+    /* MAIN CONTENT FRAME */
     .main-frame {
       max-width: 900px;
       margin: 0 auto;
@@ -36,6 +155,7 @@
       box-shadow: var(--shadow-light);
     }
 
+    /* HEADER STYLING */
     .header-container {
       display: flex;
       align-items: center;
@@ -69,9 +189,10 @@
       transition: background-color 0.3s ease;
     }
     .libutton:hover {
-      background-color: #004d99;
+        background-color: #004d99;
     }
 
+    /* PRODUCT CARD STYLING */
     .product-cards {
       display: flex;
       flex-wrap: wrap;
@@ -85,8 +206,8 @@
       max-width: 280px;
       border-radius: var(--border-radius-card);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06),
-        inset 0 1px 0 rgba(255, 255, 255, 0.8),
-        inset 0 10px 30px rgba(255, 255, 255, 0.5);
+                  inset 0 1px 0 rgba(255, 255, 255, 0.8),
+                  inset 0 10px 30px rgba(255, 255, 255, 0.5);
       cursor: pointer;
       text-decoration: none;
       color: var(--text-color);
@@ -157,6 +278,7 @@
       user-select: none;
     }
 
+    /* FOOTER STYLING */
     .footer-container {
       background-color: var(--footer-bg);
       padding: 30px;
@@ -220,6 +342,7 @@
       color: var(--secondary-color);
     }
 
+    /* Responsive Adjustments */
     @media (max-width: 600px) {
       .header-container {
         flex-direction: column;
@@ -278,122 +401,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    // DEFINE CONTENT AND VARIABLES HERE
-    const dynamicContent = {
-        header: {
-            title: "Architectural Alchemy",
-            buttonText: "Follow on LinkedIn",
-            buttonUrl: "https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=sinha-saurabh-in"
-        },
-        cards: [
-            {
-                name: "Architecture Design",
-                url: "https://sinhasaurabh.hashnode.dev/",
-                img: "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/img/architecturalalchemy/arch-design/ad.png",
-                subtitle: "Main Home Page"
-            },
-            {
-                name: "Cloud",
-                url: "https://cloud-sinhasaurabh.hashnode.dev/cloud-series",
-                img: "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/img/architecturalalchemy/cloud/Cloud_img.png",
-                subtitle: ""
-            },
-            {
-                name: "System Design",
-                url: "https://sd-sinhasaurabh.hashnode.dev/",
-                img: "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/img/architecturalalchemy/sd/sd.png",
-                subtitle: ""
-            },
-            {
-                name: "Artificial Intelligence",
-                url: "https://ai-sinhasaurabh.hashnode.dev/",
-                img: "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/img/architecturalalchemy/ai/ai-home.png",
-                subtitle: ""
-            }
-        ],
-        footer: {
-            privacyPolicyText: "Privacy Policy",
-            privacyPolicyUrl: "https://hashnode.com/privacy?source=blog-footer",
-            socialTitle: "Saurabh Sinha",
-            socialLinks: [
-                { icon: "fab fa-twitter", url: "https://x.com/sinha_saurabh_in" },
-                { icon: "fab fa-linkedin-in", url: "https://www.linkedin.com/in/sinha-saurabh-in/" },
-                { icon: "fab fa-github", url: "https://github.com/sinhasaurabh-tut" },
-                { icon: "fab fa-youtube", url: "https://www.youtube.com/@SaurabhSinha_in" }
-            ]
-        }
-    };
-
-    // DYNAMIC PAGE RENDERING LOGIC
-    function setHeaderContent(headerData) {
-        const headerTitleElement = document.getElementById('dynamic-title');
-        const headerLinkElement = document.getElementById('header-link');
-        if (headerTitleElement) {
-            headerTitleElement.textContent = headerData.title;
-        }
-        if (headerLinkElement) {
-            headerLinkElement.textContent = headerData.buttonText;
-            headerLinkElement.href = headerData.buttonUrl;
-        }
-    }
-
-    function renderProductCards(containerId, items) {
-        const container = document.getElementById(containerId);
-        container.innerHTML = "";
-        items.forEach(item => {
-            const a = document.createElement("a");
-            a.className = "product-card";
-            a.href = item.url;
-            a.target = "_blank";
-            a.rel = "noopener noreferrer";
-            a.setAttribute("aria-label", `Explore topic ${item.name}`);
-
-            a.innerHTML = `
-        <div class="product-image-wrapper">
-          <img src="${item.img}" alt="${item.name} image" loading="lazy" />
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">${item.name}</h3>
-          ${item.subtitle ? `<p class="product-subtitle">${item.subtitle}</p>` : ""}
-        </div>
-      `;
-            container.appendChild(a);
-        });
-    }
-
-    function setFooterContent(footerData) {
-        const privacyPolicyLink = document.getElementById('privacy-policy-link');
-        const socialTitleElement = document.getElementById('footer-social-title');
-        const socialLinksContainer = document.getElementById('social-links-container');
-
-        if (privacyPolicyLink) {
-            privacyPolicyLink.textContent = footerData.privacyPolicyText;
-            privacyPolicyLink.href = footerData.privacyPolicyUrl;
-        }
-
-        if (socialTitleElement) {
-            socialTitleElement.textContent = footerData.socialTitle;
-        }
-
-        if (socialLinksContainer) {
-            socialLinksContainer.innerHTML = "";
-            footerData.socialLinks.forEach(link => {
-                const a = document.createElement("a");
-                a.href = link.url;
-                a.target = "_blank";
-                a.rel = "noopener noreferrer";
-                a.innerHTML = `<i class="${link.icon}"></i>`;
-                socialLinksContainer.appendChild(a);
-            });
-        }
-    }
-
-    // INITIALIZE THE PAGE
-    document.addEventListener("DOMContentLoaded", () => {
-        setHeaderContent(dynamicContent.header);
-        renderProductCards("product-cards", dynamicContent.cards);
-        setFooterContent(dynamicContent.footer);
-    });
-</script>
