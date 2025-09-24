@@ -333,10 +333,10 @@
 
 <script>
     // URL for the common data (nav, footer)
-    const COMMON_DATA_URL = "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/pages/arch-design/common-data.json";
+    const COMMON_DATA_URL = "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/pages/arch-design/global-data.json";
 
     // URL for the page-specific data (title, cards)
-    const PAGE_DATA_URL = "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/pages/arch-design/cloud-data.json";
+    const PAGE_DATA_URL = "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/pages/arch-design/arch-data.json";
 
     // --- Dynamic Rendering Functions ---
 
@@ -436,6 +436,7 @@
             .then(data => {
                 const titleEl = document.getElementById('dynamic-title');
                 if (titleEl) {
+                    // Correctly read the "title" property from the JSON
                     titleEl.textContent = data.title;
                 }
                 renderProductCards(data.cards);
@@ -445,5 +446,3 @@
             });
     });
 </script>
-<br>
-<br>
