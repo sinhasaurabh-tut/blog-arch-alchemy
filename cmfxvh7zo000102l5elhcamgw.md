@@ -6,10 +6,10 @@ slug: temp-test
 
 ---
 
+%%[header-top] 
+
 %%[temp] 
 
 %%[temp-static] 
-
-%%[link-data] 
 
 %%[link-data]
