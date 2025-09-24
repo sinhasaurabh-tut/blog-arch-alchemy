@@ -1,9 +1,4 @@
 {
-  "header": {
-    "title": "Architectural Alchemy",
-    "buttonText": "Follow on LinkedIn",
-    "buttonUrl": "https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=sinha-saurabh-in"
-  },
   "cards": [
     {
       "name": "Architecture Design",
@@ -29,28 +24,5 @@
       "img": "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/img/architecturalalchemy/ai/ai-home.png",
       "subtitle": ""
     }
-  ],
-  "footer": {
-    "privacyPolicyText": "Privacy Policy",
-    "privacyPolicyUrl": "https://hashnode.com/privacy?source=blog-footer",
-    "socialTitle": "Saurabh Sinha",
-    "socialLinks": [
-      {
-        "icon": "fab fa-twitter",
-        "url": "https://x.com/sinha_saurabh_in"
-      },
-      {
-        "icon": "fab fa-linkedin-in",
-        "url": "https://www.linkedin.com/in/sinha-saurabh-in/"
-      },
-      {
-        "icon": "fab fa-github",
-        "url": "https://github.com/sinhasaurabh-tut"
-      },
-      {
-        "icon": "fab fa-youtube",
-        "url": "https://www.youtube.com/@SaurabhSinha_in"
-      }
-    ]
-  }
+  ]
 }
