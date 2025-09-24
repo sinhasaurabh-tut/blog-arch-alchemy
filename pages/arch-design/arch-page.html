@@ -300,7 +300,7 @@
 <div class="main-frame">
     <div class="header-container">
         <h2 class="header-title" id="dynamic-title"></h2>
-        <a class="libutton" id="header-link" target="_blank"></a>
+        <a class="libutton" id="header-link" target="_blank">Follow on LinkedIn</a>
     </div>
 
     <div id="product-cards" class="product-cards"></div>
@@ -332,23 +332,13 @@
 </div>
 
 <script>
-    // URL for the common data (header, nav, footer)
-    const COMMON_DATA_URL = "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/pages/arch-design/global-data.json";
+    // URL for the common data (nav, footer)
+    const COMMON_DATA_URL = "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/pages/arch-design/common-data.json";
 
-    // URL for the page-specific data (cards)
-    const PAGE_DATA_URL = "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/pages/arch-design/arch-data.json";
+    // URL for the page-specific data (title, cards)
+    const PAGE_DATA_URL = "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/pages/arch-design/cloud-page-data.json";
 
     // --- Dynamic Rendering Functions ---
-
-    function renderHeader(headerData) {
-        const titleEl = document.getElementById('dynamic-title');
-        const linkEl = document.getElementById('header-link');
-        if (titleEl) titleEl.textContent = headerData.title;
-        if (linkEl) {
-            linkEl.textContent = headerData.buttonText;
-            linkEl.href = headerData.buttonUrl;
-        }
-    }
 
     function renderNavMenu(navLinks) {
         const container = document.getElementById('global-link-bar');
@@ -419,7 +409,7 @@
     // --- Fetch and Render All Content ---
 
     document.addEventListener('DOMContentLoaded', () => {
-        // Fetch common data (header, nav, footer)
+        // Fetch common data (nav, footer)
         fetch(COMMON_DATA_URL)
             .then(response => {
                 if (!response.ok) {
@@ -428,7 +418,6 @@
                 return response.json();
             })
             .then(data => {
-                renderHeader(data.header);
                 renderNavMenu(data.navLinks);
                 renderFooter(data.footer);
             })
@@ -436,7 +425,7 @@
                 console.error('Error loading common content:', error);
             });
 
-        // Fetch page-specific data (cards)
+        // Fetch page-specific data (title, cards)
         fetch(PAGE_DATA_URL)
             .then(response => {
                 if (!response.ok) {
@@ -445,6 +434,10 @@
                 return response.json();
             })
             .then(data => {
+                const titleEl = document.getElementById('dynamic-title');
+                if (titleEl) {
+                    titleEl.textContent = data.title;
+                }
                 renderProductCards(data.cards);
             })
             .catch(error => {
@@ -452,3 +445,5 @@
             });
     });
 </script>
+<br>
+<br>
