@@ -52,5 +52,23 @@
         "url": "https://www.youtube.com/@SaurabhSinha_in"
       }
     ]
-  }
+  },
+  "globalLinks": [
+    {
+      "text": "Architecture Design",
+      "url": "https://sinhasaurabh.hashnode.dev/"
+    },
+    {
+      "text": "Cloud",
+      "url": "https://cloud-sinhasaurabh.hashnode.dev/"
+    },
+    {
+      "text": "System Design",
+      "url": "https://sd-sinhasaurabh.hashnode.dev/"
+    },
+    {
+      "text": "Artificial Intelligence",
+      "url": "https://ai-sinhasaurabh.hashnode.dev/"
+    }
+  ]
 }
