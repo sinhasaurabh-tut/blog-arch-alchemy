@@ -10,4 +10,6 @@ slug: temp-test
 
 %%[temp-static] 
 
+%%[link-data] 
+
 %%[link-data]
