@@ -1,5 +1,7 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 <style>
-    /* Global Link Bar Styles */
+    /* Base Styles */
     .global-nav-bar {
       display: flex;
       justify-content: center;
@@ -11,6 +13,13 @@
       margin-bottom: 20px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       flex-wrap: wrap;
+      position: relative;
+      z-index: 1000;
+    }
+
+    .menu-item {
+      position: relative;
+      margin: 5px;
     }
 
     .global-nav-link {
@@ -22,28 +31,71 @@
       padding: 8px 15px;
       border-radius: 8px;
       transition: background-color 0.3s ease, color 0.3s ease;
-      margin: 5px;
+      display: block;
+      cursor: pointer;
     }
 
     .global-nav-link:hover {
       background-color: #e0eaf3;
       color: #084c90;
     }
-    /* Active link style */
+
     .global-nav-link.active {
       background-color: #0a66c2;
       color: #ffffff;
       pointer-events: none;
     }
-    /* Responsive adjustments for mobile */
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #ffffff;
+      border: 1px solid #e0e6ea;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 8px 0;
+      min-width: 180px;
+    }
+
+    .menu-item:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-item {
+      display: block;
+      padding: 10px 15px;
+      color: #333333;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .dropdown-item:hover {
+      background-color: #f0f4f8;
+      color: #0a66c2;
+    }
+
+    /* Responsive adjustments */
     @media (max-width: 600px) {
       .global-nav-bar {
         flex-direction: column;
+        align-items: stretch;
       }
-      .global-nav-link {
+      .menu-item {
         width: 100%;
+      }
+      .global-nav-link, .dropdown-item {
         text-align: center;
-        box-sizing: border-box;
+      }
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border: none;
+        padding: 0;
+        min-width: auto;
       }
     }
 </style>
@@ -54,12 +106,15 @@
     // DEFINE THE URL FOR YOUR JSON DATA
     const DATA_URL = "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/pages/arch-design/global-header-data.json";
 
-    // FUNCTION TO RENDER THE LINK BAR
+    // FUNCTION TO RENDER THE LINK BAR WITH SUBCATEGORIES
     function renderGlobalLinks(links) {
       const container = document.getElementById('global-link-bar');
       if (!container) return;
 
       links.forEach(link => {
+        const menuItem = document.createElement('div');
+        menuItem.className = 'menu-item';
+
         const a = document.createElement('a');
         a.href = link.url;
         a.textContent = link.text;
@@ -71,7 +126,27 @@
           a.classList.add('active');
         }
 
-        container.appendChild(a);
+        menuItem.appendChild(a);
+
+        // Check if subcategories exist
+        if (link.subcategories && link.subcategories.length > 0) {
+          const dropdownMenu = document.createElement('div');
+          dropdownMenu.className = 'dropdown-menu';
+
+          link.subcategories.forEach(sub => {
+            const subLink = document.createElement('a');
+            subLink.href = sub.url;
+            subLink.textContent = sub.text;
+            subLink.className = 'dropdown-item';
+            subLink.target = '_blank';
+            subLink.rel = 'noopener noreferrer';
+            dropdownMenu.appendChild(subLink);
+          });
+
+          menuItem.appendChild(dropdownMenu);
+        }
+
+        container.appendChild(menuItem);
       });
     }
 
