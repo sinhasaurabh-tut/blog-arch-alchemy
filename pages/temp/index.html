@@ -278,90 +278,120 @@
 </div>
 
 <script>
+    // DEFINE CONTENT AND VARIABLES HERE
+    const dynamicContent = {
+        header: {
+            title: "Architectural Alchemy",
+            buttonText: "Follow on LinkedIn",
+            buttonUrl: "https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=sinha-saurabh-in"
+        },
+        cards: [
+            {
+                name: "Architecture Design",
+                url: "https://sinhasaurabh.hashnode.dev/",
+                img: "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/img/architecturalalchemy/arch-design/ad.png",
+                subtitle: "Main Home Page"
+            },
+            {
+                name: "Cloud",
+                url: "https://cloud-sinhasaurabh.hashnode.dev/cloud-series",
+                img: "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/img/architecturalalchemy/cloud/Cloud_img.png",
+                subtitle: ""
+            },
+            {
+                name: "System Design",
+                url: "https://sd-sinhasaurabh.hashnode.dev/",
+                img: "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/img/architecturalalchemy/sd/sd.png",
+                subtitle: ""
+            },
+            {
+                name: "Artificial Intelligence",
+                url: "https://ai-sinhasaurabh.hashnode.dev/",
+                img: "https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/img/architecturalalchemy/ai/ai-home.png",
+                subtitle: ""
+            }
+        ],
+        footer: {
+            privacyPolicyText: "Privacy Policy",
+            privacyPolicyUrl: "https://hashnode.com/privacy?source=blog-footer",
+            socialTitle: "Saurabh Sinha",
+            socialLinks: [
+                { icon: "fab fa-twitter", url: "https://x.com/sinha_saurabh_in" },
+                { icon: "fab fa-linkedin-in", url: "https://www.linkedin.com/in/sinha-saurabh-in/" },
+                { icon: "fab fa-github", url: "https://github.com/sinhasaurabh-tut" },
+                { icon: "fab fa-youtube", url: "https://www.youtube.com/@SaurabhSinha_in" }
+            ]
+        }
+    };
+
     // DYNAMIC PAGE RENDERING LOGIC
- function setHeaderContent(headerData) {
-   const headerTitleElement = document.getElementById('dynamic-title');
-   const headerLinkElement = document.getElementById('header-link');
-   if (headerTitleElement) {
-     headerTitleElement.textContent = headerData.title;
-   }
-   if (headerLinkElement) {
-     headerLinkElement.textContent = headerData.buttonText;
-     headerLinkElement.href = headerData.buttonUrl;
-   }
- }
+    function setHeaderContent(headerData) {
+        const headerTitleElement = document.getElementById('dynamic-title');
+        const headerLinkElement = document.getElementById('header-link');
+        if (headerTitleElement) {
+            headerTitleElement.textContent = headerData.title;
+        }
+        if (headerLinkElement) {
+            headerLinkElement.textContent = headerData.buttonText;
+            headerLinkElement.href = headerData.buttonUrl;
+        }
+    }
 
- function renderProductCards(containerId, items) {
-   const container = document.getElementById(containerId);
-   container.innerHTML = "";
-   items.forEach(item => {
-     const a = document.createElement("a");
-     a.className = "product-card";
-     a.href = item.url;
-     a.target = "_blank";
-     a.rel = "noopener noreferrer";
-     a.setAttribute("aria-label", `Explore topic ${item.name}`);
+    function renderProductCards(containerId, items) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = "";
+        items.forEach(item => {
+            const a = document.createElement("a");
+            a.className = "product-card";
+            a.href = item.url;
+            a.target = "_blank";
+            a.rel = "noopener noreferrer";
+            a.setAttribute("aria-label", `Explore topic ${item.name}`);
 
-     a.innerHTML = `
-       <div class="product-image-wrapper">
-         <img src="${item.img}" alt="${item.name} image" loading="lazy" />
-       </div>
-       <div class="product-info">
-         <h3 class="product-name">${item.name}</h3>
-         ${item.subtitle ? `<p class="product-subtitle">${item.subtitle}</p>` : ""}
-       </div>
-     `;
-     container.appendChild(a);
-   });
- }
+            a.innerHTML = `
+        <div class="product-image-wrapper">
+          <img src="${item.img}" alt="${item.name} image" loading="lazy" />
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">${item.name}</h3>
+          ${item.subtitle ? `<p class="product-subtitle">${item.subtitle}</p>` : ""}
+        </div>
+      `;
+            container.appendChild(a);
+        });
+    }
 
- function setFooterContent(footerData) {
-   const privacyPolicyLink = document.getElementById('privacy-policy-link');
-   const socialTitleElement = document.getElementById('footer-social-title');
-   const socialLinksContainer = document.getElementById('social-links-container');
+    function setFooterContent(footerData) {
+        const privacyPolicyLink = document.getElementById('privacy-policy-link');
+        const socialTitleElement = document.getElementById('footer-social-title');
+        const socialLinksContainer = document.getElementById('social-links-container');
 
-   if (privacyPolicyLink) {
-     privacyPolicyLink.textContent = footerData.privacyPolicyText;
-     privacyPolicyLink.href = footerData.privacyPolicyUrl;
-   }
+        if (privacyPolicyLink) {
+            privacyPolicyLink.textContent = footerData.privacyPolicyText;
+            privacyPolicyLink.href = footerData.privacyPolicyUrl;
+        }
 
-   if (socialTitleElement) {
-     socialTitleElement.textContent = footerData.socialTitle;
-   }
+        if (socialTitleElement) {
+            socialTitleElement.textContent = footerData.socialTitle;
+        }
 
-   if (socialLinksContainer) {
-     socialLinksContainer.innerHTML = "";
-     footerData.socialLinks.forEach(link => {
-       const a = document.createElement("a");
-       a.href = link.url;
-       a.target = "_blank";
-       a.rel = "noopener noreferrer";
-       a.innerHTML = `<i class="${link.icon}"></i>`;
-       socialLinksContainer.appendChild(a);
-     });
-   }
- }
+        if (socialLinksContainer) {
+            socialLinksContainer.innerHTML = "";
+            footerData.socialLinks.forEach(link => {
+                const a = document.createElement("a");
+                a.href = link.url;
+                a.target = "_blank";
+                a.rel = "noopener noreferrer";
+                a.innerHTML = `<i class="${link.icon}"></i>`;
+                socialLinksContainer.appendChild(a);
+            });
+        }
+    }
 
- // INITIALIZE THE PAGE
- document.addEventListener("DOMContentLoaded", () => {
-   // Use a CORS proxy to fetch the JSON data
-   const githubJsonUrl = 'https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/pages/temp/data.json';
-   const proxyUrl = `https://cors-anywhere.herokuapp.com/${githubJsonUrl}`;
-
-   fetch(proxyUrl)
-     .then(response => {
-       if (!response.ok) {
-         throw new Error('Network response was not ok');
-       }
-       return response.json();
-     })
-     .then(dynamicContent => {
-       setHeaderContent(dynamicContent.header);
-       renderProductCards("product-cards", dynamicContent.cards);
-       setFooterContent(dynamicContent.footer);
-     })
-     .catch(error => {
-       console.error('There was a problem with the fetch operation:', error);
-     });
- });
+    // INITIALIZE THE PAGE
+    document.addEventListener("DOMContentLoaded", () => {
+        setHeaderContent(dynamicContent.header);
+        renderProductCards("product-cards", dynamicContent.cards);
+        setFooterContent(dynamicContent.footer);
+    });
 </script>
