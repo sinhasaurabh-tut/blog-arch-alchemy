@@ -6,4 +6,6 @@ slug: temp-test
 
 ---
 
-%%[temp]
+%%[temp] 
+
+%%[temp-static]
