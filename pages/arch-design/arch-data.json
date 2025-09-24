@@ -1,5 +1,10 @@
 {
-  "title": "Architecture Alchemy",
+  "title": "Architectural CC",
+  "header": {
+    "title": "Architectural Alchemy",
+    "buttonText": "Follow on LinkedIn",
+    "buttonUrl": "https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=sinha-saurabh-in"
+  },
   "cards": [
     {
       "name": "Architecture Design",
