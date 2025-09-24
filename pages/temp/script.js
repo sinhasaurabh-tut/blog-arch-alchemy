@@ -65,7 +65,7 @@ function setFooterContent(footerData) {
 // INITIALIZE THE PAGE
 document.addEventListener("DOMContentLoaded", () => {
   // Use the raw GitHub URL for your JSON file
-  const jsonUrl = 'https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/pages/temp/data.json';
+  const jsonUrl = 'https://raw.githubusercontent.com/sinhasaurabh-tut/blog-arch-alchemy/main/pages/temp/data.json';
 
   fetch(jsonUrl)
     .then(response => {
