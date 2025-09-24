@@ -8,4 +8,8 @@ slug: temp-test
 
 %%[temp] 
 
-%%[temp-static]
+%%[temp-static] 
+
+%%[link-data] 
+
+%%[link-data]
